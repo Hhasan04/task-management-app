@@ -6,7 +6,8 @@ import {
   findTaskById,
   getEditingTaskId,
   updateTask,
-  initilizeState
+  initilizeState,
+  updateTaskStatus
 } from "./state.js";
 import { 
   enterEditMode,
@@ -17,7 +18,7 @@ import {
 import { renderStatistics } from "./statistics.js";
 import { renderTasks } from "./render.js";
 
-export const handleFormSubmit = (event) => {
+const handleFormSubmit = (event) => {
     event.preventDefault();
 
     const taskData = getTaskFormData();
@@ -42,7 +43,7 @@ export const handleFormSubmit = (event) => {
     renderStatistics();
 };
 
-export const handleTaskListClick = (event) => {
+const handleTaskListClick = (event) => {
   const button = event.target.closest("button[data-action]");
   
   if (!button) {
@@ -81,11 +82,25 @@ export const handleTaskListClick = (event) => {
   }
 };
 
-export const initializeApp = () => {
+const handleStatusChange = (event) => {
+  if(!event.target.classList.contains("status-select")) {
+    return;
+  }
+
+  const taskId = event.target.dataset.id;
+  const newStatus = event.target.value;
+
+  updateTaskStatus(taskId, newStatus);
+  renderTasks();
+  renderStatistics();
+};
+
+const initializeApp = () => {
     initilizeState();
     
     dom.taskForm.addEventListener("submit", handleFormSubmit);
     dom.taskList.addEventListener("click", handleTaskListClick);
+    dom.taskList.addEventListener("change", handleStatusChange);
     dom.cancelEditButton.addEventListener("click", exitEditMode);
 
     dom.dueDateInput.min = getTodayDateString();

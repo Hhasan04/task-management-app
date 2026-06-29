@@ -69,3 +69,15 @@ export const deleteTaskById = (taskId) => {
     tasks.splice(taskIndex, 1);
     saveTasksToStorage(tasks, nextTaskId);
 };
+
+export const updateTaskStatus = (taskId, newStatus) => {
+
+    const task = findTaskById(taskId);
+
+    if(!task) {
+        return;
+    }
+
+    task.status = newStatus;
+    saveTasksToStorage(tasks, nextTaskId);
+};

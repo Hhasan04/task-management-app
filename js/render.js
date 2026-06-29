@@ -2,8 +2,8 @@ import { dom } from "./dom.js";
 import { getTasks } from "./state.js";
 import { escapeHTML, formatDate, formatDateTime, isOverdue } from "./utils.js";
 
-export const renderTasks = () => {
-    const tasks = getTasks();
+export const renderTasks = (tasks = getTasks()) => {
+    
 
     if (tasks.length === 0) {
         dom.taskList.innerHTML = 

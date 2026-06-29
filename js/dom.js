@@ -21,4 +21,10 @@ export const dom = {
   inProgressCount: document.querySelector("#progress-count"),
   completedCount: document.querySelector("#completed-count"),
   overdueCount: document.querySelector("#overdue-count"),
+
+  searchInput: document.querySelector("#search"),
+  statusFilter: document.querySelector("#status-filter"),
+  priorityFilter: document.querySelector("#priority-filter"),
+  sortBy: document.querySelector("#sort-by"),
+  clearFiltersButton: document.querySelector("#clear-filters-button"),
 };

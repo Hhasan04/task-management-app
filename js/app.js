@@ -7,8 +7,10 @@ import {
   getEditingTaskId,
   updateTask,
   initilizeState,
-  updateTaskStatus
+  updateTaskStatus,
+  getTasks,
 } from "./state.js";
+import { getVisibleTasks } from "./filters.js";
 import { 
   enterEditMode,
   exitEditMode,
@@ -17,6 +19,22 @@ import {
 } from "./form.js";
 import { renderStatistics } from "./statistics.js";
 import { renderTasks } from "./render.js";
+
+const renderApp = () => {
+  const visibleTasks = getVisibleTasks(getTasks(), getCurrentFilters());
+
+  renderTasks(visibleTasks);
+  renderStatistics();
+};
+
+const getCurrentFilters = () => {
+  return {
+    searchText: dom.searchInput.value.trim().toLowerCase(),
+    status: dom.statusFilter.value,
+    priority: dom.priorityFilter.value,
+    sortBy: dom.sortBy.value
+  };
+};
 
 const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -32,15 +50,13 @@ const handleFormSubmit = (event) => {
     if (editingTaskId) {
         updateTask(editingTaskId, taskData);
         exitEditMode();
-        renderTasks();
-        renderStatistics();
+        renderApp();
         return;
     }
 
     createTask(taskData);
     exitEditMode();
-    renderTasks();
-    renderStatistics();
+    renderApp();
 };
 
 const handleTaskListClick = (event) => {
@@ -66,8 +82,7 @@ const handleTaskListClick = (event) => {
       exitEditMode();
     }
 
-    renderTasks();
-    renderStatistics();
+    renderApp();
     return;
   }
 
@@ -91,8 +106,20 @@ const handleStatusChange = (event) => {
   const newStatus = event.target.value;
 
   updateTaskStatus(taskId, newStatus);
-  renderTasks();
-  renderStatistics();
+  renderApp();
+};
+
+const handleFiltersChange = () => {
+  renderApp();
+};
+
+const clearFilters = () => {
+  dom.searchInput.value = "";
+  dom.statusFilter.value = "all";
+  dom.priorityFilter.value = "all";
+  dom.sortBy.value = "createdAt";
+
+  renderApp();
 };
 
 const initializeApp = () => {
@@ -102,10 +129,14 @@ const initializeApp = () => {
     dom.taskList.addEventListener("click", handleTaskListClick);
     dom.taskList.addEventListener("change", handleStatusChange);
     dom.cancelEditButton.addEventListener("click", exitEditMode);
+    dom.searchInput.addEventListener("input", handleFiltersChange);
+    dom.statusFilter.addEventListener("change", handleFiltersChange);
+    dom.priorityFilter.addEventListener("change", handleFiltersChange);
+    dom.sortBy.addEventListener("change", handleFiltersChange);
+    dom.clearFiltersButton.addEventListener("click", clearFilters);
 
     dom.dueDateInput.min = getTodayDateString();
-    renderTasks();
-    renderStatistics();
+    renderApp();
 };
 
 initializeApp();

@@ -27,4 +27,6 @@ export const dom = {
   priorityFilter: document.querySelector("#priority-filter"),
   sortBy: document.querySelector("#sort-by"),
   clearFiltersButton: document.querySelector("#clear-filters-button"),
+
+  clearCompletedButton: document.querySelector("#clear-completed-button"),
 };

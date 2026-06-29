@@ -81,3 +81,13 @@ export const updateTaskStatus = (taskId, newStatus) => {
     task.status = newStatus;
     saveTasksToStorage(tasks, nextTaskId);
 };
+
+export const clearCompletedTasks = () => {
+    const remainingTasks = tasks.filter((task) => {
+        return task.status !== "completed";
+    })
+
+    tasks = remainingTasks;
+
+    saveTasksToStorage(tasks, nextTaskId);
+};

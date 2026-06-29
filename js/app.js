@@ -9,6 +9,7 @@ import {
   initilizeState,
   updateTaskStatus,
   getTasks,
+  clearCompletedTasks,
 } from "./state.js";
 import { getVisibleTasks } from "./filters.js";
 import { 
@@ -113,6 +114,26 @@ const handleFiltersChange = () => {
   renderApp();
 };
 
+const handleClearCompletedTasks = () => {
+    const hasCompletedTasks = getTasks().some((task) => {
+    return task.status === "completed";
+  });
+
+  if (!hasCompletedTasks) {
+    alert("There are no completed tasks to clear.");
+    return;
+  }
+  
+  const shouldClear = confirm("Are you sure you want to delete all completed tasks?");
+
+  if(!shouldClear)
+    return;
+
+  clearCompletedTasks();
+  exitEditMode();
+  renderApp();
+}
+
 const clearFilters = () => {
   dom.searchInput.value = "";
   dom.statusFilter.value = "all";
@@ -134,6 +155,7 @@ const initializeApp = () => {
     dom.priorityFilter.addEventListener("change", handleFiltersChange);
     dom.sortBy.addEventListener("change", handleFiltersChange);
     dom.clearFiltersButton.addEventListener("click", clearFilters);
+    dom.clearCompletedButton.addEventListener("click", handleClearCompletedTasks);
 
     dom.dueDateInput.min = getTodayDateString();
     renderApp();

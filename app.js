@@ -9,9 +9,13 @@
   const titleError = document.querySelector("#title-error");
   const priorityError = document.querySelector("#priority-error");
   const dueDateError = document.querySelector("#due-date-error");
+  const formTitle = document.querySelector("#form-title");
+  const submitButton = document.querySelector("#submit-button");
+  const cancelEditButton = document.querySelector("#cancel-edit-button");
 
   const tasks = [];
   let nextTaskId = 1;
+  let editingTaskId = null;
 
   const getTodayDateString = () => {
     const today = new Date();
@@ -106,6 +110,66 @@
     };
   }
 
+  const enterEditMode = (task) => {
+    editingTaskId = task.id;
+
+    titleInput.value = task.title;
+    descriptionInput.value = task.description;
+    priorityInput.value = task.priority;
+    statusInput.value = task.status;
+    dueDateInput.value = task.dueDate;
+
+    formTitle.textContent = "Edit Task";
+    submitButton.textContent = "Update Task";
+    cancelEditButton.classList.remove("hidden");
+    titleInput.focus();
+  }
+
+const exitEditMode = () => {
+  editingTaskId = null;
+  formTitle.textContent = "Add New Task";
+  submitButton.textContent = "+ Add Task";
+  cancelEditButton.classList.add("hidden");
+};
+
+const updateTask = (taskData) => {
+    const task = tasks.find((currentTask) => {
+        return currentTask.id === editingTaskId;
+    });
+
+    if (!task) {
+        return;
+    }
+
+    task.title = taskData.title;
+    task.description = taskData.description;
+    task.priority = taskData.priority;
+    task.status = taskData.status;
+    task.dueDate = taskData.dueDate;
+}
+
+const deleteTask = (taskId) => {
+    const taskIndex = tasks.findIndex((task) => task.id === taskId);
+
+    if(taskIndex === -1) {
+        return;
+    }
+
+    const shouldDelete = confirm("Are you sure you want to delete this task?");
+    
+    if (!shouldDelete) {
+        return;
+    }
+
+    tasks.splice(taskIndex, 1);
+
+    if (editingTaskId === taskId) {
+        exitEditMode();
+    }
+
+    renderTasks();
+}
+
   const renderTasks = () => {
     if (tasks.length === 0) {
       taskList.innerHTML = '<tr><td class="empty-table" colspan="7">No tasks yet. Add your first task above.</td></tr>';
@@ -140,8 +204,8 @@
             <td>${formatDateTime(task.createdAt)}</td>
             <td>
               <div class="row-actions">
-                <button type="button" class="icon-button" data-action="edit" data-id="${task.id}">E</button>
-                <button type="button" class="icon-button" data-action="delete" data-id="${task.id}">D</button>
+                <button type="button" class="icon-button" data-action="edit" data-id="${task.id}">Edit</button>
+                <button type="button" class="icon-button delete-button" data-action="delete" data-id="${task.id}">Delete</button>
               </div>
             </td>
           </tr>
@@ -150,7 +214,7 @@
       .join("");
   }
 
-  taskForm.addEventListener("submit", function (event) {
+  taskForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
     const taskData = getTaskFormData();
@@ -159,13 +223,51 @@
       return;
     }
 
+    if (editingTaskId) {
+        updateTask(taskData);
+        exitEditMode();
+        renderTasks();
+        return;
+    }
+
     const newTask = createTask(taskData);
     tasks.push(newTask);
 
+    exitEditMode();
     taskForm.reset();
     statusInput.value = "pending";
     renderTasks();
   });
+
+  taskList.addEventListener("click", (event) => {
+    const button = event.target.closest("button[data-action]");
+
+    if (!button) {
+        return;
+    }
+
+    const taskId = button.dataset.id;
+    const action = button.dataset.action;
+
+    if (action === "delete") {
+        deleteTask(taskId);
+        return;
+    }
+
+    if (action === "edit") {
+        const task = tasks.find((currentTask) => {
+        return currentTask.id === taskId;
+        });
+
+        if (task) {
+        enterEditMode(task);
+        }
+    }
+    });
+
+cancelEditButton.addEventListener("click", () => {
+  exitEditMode();
+});
 
   dueDateInput.min = getTodayDateString();
   renderTasks();

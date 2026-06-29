@@ -348,11 +348,18 @@ tr:last-child td {
 .icon-button {
   display: grid;
   place-items: center;
-  width: 34px;
+  min-width: 52px;
   height: 34px;
+  padding: 0 10px;
   border: 1px solid var(--line);
   background: #ffffff;
   color: var(--primary);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.delete-button {
+  color: var(--danger);
 }
 
 .icon-button:hover {
@@ -471,4 +478,8 @@ tr:last-child td {
   .primary-button {
     width: 100%;
   }
+}
+
+.hidden {
+  display: none;
 }

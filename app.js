@@ -13,7 +13,8 @@
   const submitButton = document.querySelector("#submit-button");
   const cancelEditButton = document.querySelector("#cancel-edit-button");
 
-  const tasks = [];
+  const STORAGE_KEY = "tasks";
+  let tasks = [];
   let nextTaskId = 1;
   let editingTaskId = null;
 
@@ -110,6 +111,28 @@
     };
   }
 
+  const saveTasks = () => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+    localStorage.setItem("nextTaskId", nextTaskId.toString());
+  }
+
+  const loadTasks = () => {
+    const storedTasks = localStorage.getItem(STORAGE_KEY);
+    const storedNextTaskId = localStorage.getItem("nextTaskId");
+
+    if(!storedTasks) {
+        return;
+    }
+
+    try {
+        tasks = JSON.parse(storedTasks);
+        nextTaskId = parseInt(storedNextTaskId) || 1;
+    } catch (error) {
+        console.error("Error parsing tasks from localStorage:", error);
+        tasks = [];
+    }
+};
+
   const enterEditMode = (task) => {
     editingTaskId = task.id;
 
@@ -162,7 +185,7 @@ const deleteTask = (taskId) => {
     }
 
     tasks.splice(taskIndex, 1);
-
+    saveTasks();
     if (editingTaskId === taskId) {
         exitEditMode();
     }
@@ -225,6 +248,7 @@ const deleteTask = (taskId) => {
 
     if (editingTaskId) {
         updateTask(taskData);
+        saveTasks();
         exitEditMode();
         renderTasks();
         return;
@@ -232,6 +256,7 @@ const deleteTask = (taskId) => {
 
     const newTask = createTask(taskData);
     tasks.push(newTask);
+    saveTasks();
 
     exitEditMode();
     taskForm.reset();
@@ -268,6 +293,8 @@ const deleteTask = (taskId) => {
 cancelEditButton.addEventListener("click", () => {
   exitEditMode();
 });
+
+  loadTasks();
 
   dueDateInput.min = getTodayDateString();
   renderTasks();

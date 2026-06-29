@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Management Application</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page-shell">
+    <div class="main-column">
+      <section class="panel add-task-panel">
+        <div class="panel-title">
+          <span class="title-icon"></span>
+          <h1>Add New Task</h1>
+        </div>
+
+        <form id="task-form" class="task-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="title">Title <span>*</span></label>
+              <input id="title" name="title" type="text" placeholder="Enter task title">
+              <span id="title-error" class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="priority">Priority <span>*</span></label>
+              <select id="priority" name="priority">
+                <option value="">Select priority</option>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="status">Status <span>*</span></label>
+              <select id="status" name="status">
+                <option value="pending">Pending</option>
+                <option value="in-progress">In Progress</option>
+                <option value="completed">Completed</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="due-date">Due Date <span>*</span></label>
+              <input id="due-date" name="dueDate" type="date">
+              <span id="due-date-error" class="error-message"></span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" name="description" rows="4" placeholder="Enter task description"></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="primary-button">+ Add Task</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel tasks-panel">
+        <div class="toolbar">
+          <div class="search-box">
+            <input id="search" type="search" placeholder="Search tasks...">
+            <span>Search</span>
+          </div>
+
+          <select id="status-filter">
+            <option value="all">All Status</option>
+            <option value="pending">Pending</option>
+            <option value="in-progress">In Progress</option>
+            <option value="completed">Completed</option>
+          </select>
+
+          <select id="priority-filter">
+            <option value="all">All Priority</option>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
+
+          <select id="sort-by">
+            <option value="createdAt">Sort by: Created At</option>
+            <option value="dueDate">Sort by: Due Date</option>
+            <option value="priority">Sort by: Priority</option>
+          </select>
+
+          <button type="button" class="secondary-button">Clear Filters</button>
+        </div>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Task</th>
+                <th>Priority</th>
+                <th>Status</th>
+                <th>Due Date</th>
+                <th>Created At</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="task-list"></tbody>
+          </table>
+        </div>
+
+        <div class="pagination">
+          <button type="button" class="secondary-button" disabled>Previous</button>
+          <button type="button" class="page-button active">1</button>
+          <button type="button" class="secondary-button" disabled>Next</button>
+        </div>
+      </section>
+    </div>
+
+    <aside class="sidebar">
+      <section class="panel">
+        <div class="panel-title">
+          <span class="mini-icon">S</span>
+          <h2>Statistics</h2>
+        </div>
+
+        <div class="stats-list">
+          <div class="stat-card purple">
+            <span>Total Tasks</span>
+            <strong id="total-count">0</strong>
+          </div>
+          <div class="stat-card orange">
+            <span>Pending</span>
+            <strong id="pending-count">0</strong>
+          </div>
+          <div class="stat-card blue">
+            <span>In Progress</span>
+            <strong id="progress-count">0</strong>
+          </div>
+          <div class="stat-card green">
+            <span>Completed</span>
+            <strong id="completed-count">0</strong>
+          </div>
+          <div class="stat-card red">
+            <span>Overdue</span>
+            <strong id="overdue-count">0</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-title">
+          <span class="mini-icon">Q</span>
+          <h2>Quick Actions</h2>
+        </div>
+
+        <div class="quick-actions">
+          <button type="button" class="action-button">Clear Completed Tasks</button>
+          <button type="button" class="action-button">Export as JSON</button>
+          <button type="button" class="action-button">Import from JSON</button>
+        </div>
+      </section>
+
+      <section class="panel drag-panel">
+        <div class="panel-title">
+          <span class="mini-icon">D</span>
+          <h2>Drag & Drop</h2>
+        </div>
+        <p>Drag tasks to reorder them</p>
+      </section>
+    </aside>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

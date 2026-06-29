@@ -14,6 +14,7 @@ import {
   getTaskFormData,
   validateTaskForm
 } from "./form.js";
+import { renderStatistics } from "./statistics.js";
 import { renderTasks } from "./render.js";
 
 export const handleFormSubmit = (event) => {
@@ -31,12 +32,14 @@ export const handleFormSubmit = (event) => {
         updateTask(editingTaskId, taskData);
         exitEditMode();
         renderTasks();
+        renderStatistics();
         return;
     }
 
     createTask(taskData);
     exitEditMode();
     renderTasks();
+    renderStatistics();
 };
 
 export const handleTaskListClick = (event) => {
@@ -63,6 +66,7 @@ export const handleTaskListClick = (event) => {
     }
 
     renderTasks();
+    renderStatistics();
     return;
   }
 
@@ -86,6 +90,7 @@ export const initializeApp = () => {
 
     dom.dueDateInput.min = getTodayDateString();
     renderTasks();
+    renderStatistics();
 };
 
 initializeApp();

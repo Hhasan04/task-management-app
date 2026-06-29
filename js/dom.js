@@ -14,7 +14,11 @@ export const dom = {
 
   formTitle: document.querySelector("#form-title"),
   submitButton: document.querySelector("#submit-button"),
-  cancelEditButton: document.querySelector("#cancel-edit-button")
+  cancelEditButton: document.querySelector("#cancel-edit-button"),
 
-  
+  totalCount: document.querySelector("#total-count"),
+  pendingCount: document.querySelector("#pending-count"),
+  inProgressCount: document.querySelector("#progress-count"),
+  completedCount: document.querySelector("#completed-count"),
+  overdueCount: document.querySelector("#overdue-count"),
 };

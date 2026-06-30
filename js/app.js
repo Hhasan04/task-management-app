@@ -20,6 +20,7 @@ import {
 } from "./form.js";
 import { renderStatistics } from "./statistics.js";
 import { renderTasks } from "./render.js";
+import { exportAsJson } from "./jsonExport.js";
 
 const renderApp = () => {
   const visibleTasks = getVisibleTasks(getTasks(), getCurrentFilters());
@@ -123,7 +124,7 @@ const handleClearCompletedTasks = () => {
     alert("There are no completed tasks to clear.");
     return;
   }
-  
+
   const shouldClear = confirm("Are you sure you want to delete all completed tasks?");
 
   if(!shouldClear)
@@ -143,6 +144,17 @@ const clearFilters = () => {
   renderApp();
 };
 
+const handleExportAsJson = () => {
+  const tasks = getTasks();
+
+  if(tasks.length === 0){
+    alert("There is no tasks to export.");
+    return;
+  }
+
+  exportAsJson(tasks);
+}
+
 const initializeApp = () => {
     initilizeState();
     
@@ -156,6 +168,7 @@ const initializeApp = () => {
     dom.sortBy.addEventListener("change", handleFiltersChange);
     dom.clearFiltersButton.addEventListener("click", clearFilters);
     dom.clearCompletedButton.addEventListener("click", handleClearCompletedTasks);
+    dom.exportJsonButton.addEventListener("click", handleExportAsJson);
 
     dom.dueDateInput.min = getTodayDateString();
     renderApp();

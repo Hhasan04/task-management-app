@@ -29,4 +29,5 @@ export const dom = {
   clearFiltersButton: document.querySelector("#clear-filters-button"),
 
   clearCompletedButton: document.querySelector("#clear-completed-button"),
+  exportJsonButton: document.querySelector("#export-json-button"),
 };

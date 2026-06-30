@@ -30,4 +30,6 @@ export const dom = {
 
   clearCompletedButton: document.querySelector("#clear-completed-button"),
   exportJsonButton: document.querySelector("#export-json-button"),
+  importJsonButton: document.querySelector("#import-json-button"),
+  importJsonInput: document.querySelector("#import-json-input")
 };

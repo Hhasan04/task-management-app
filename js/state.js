@@ -91,3 +91,28 @@ export const clearCompletedTasks = () => {
 
     saveTasksToStorage(tasks, nextTaskId);
 };
+
+export const getNextIdFromTasks = (taskList) => {
+    if(taskList.length === 0) {
+        return 1;
+    }
+
+    const biggestId = taskList.reduce((maxId, task) => {
+        const taskNumber = Number(task.id.split("-")[1]);
+
+        if(taskNumber > maxId) {
+            return taskNumber;
+        }
+
+        return maxId;
+    }, 0);
+
+    return biggestId + 1;
+};
+
+export const replaceTasks = (importedTasks) => {
+    tasks = importedTasks;
+    nextTaskId = getNextIdFromTasks(tasks);
+
+    saveTasksToStorage(tasks, nextTaskId);
+};

@@ -10,6 +10,7 @@ import {
   updateTaskStatus,
   getTasks,
   clearCompletedTasks,
+  replaceTasks,
 } from "./state.js";
 import { getVisibleTasks } from "./filters.js";
 import { 
@@ -21,6 +22,7 @@ import {
 import { renderStatistics } from "./statistics.js";
 import { renderTasks } from "./render.js";
 import { exportAsJson } from "./jsonExport.js";
+import { readTasksFromJsonFile } from "./jsonImport.js";
 
 const renderApp = () => {
   const visibleTasks = getVisibleTasks(getTasks(), getCurrentFilters());
@@ -153,7 +155,37 @@ const handleExportAsJson = () => {
   }
 
   exportAsJson(tasks);
-}
+};
+
+const handleImportButtonClick = () => {
+  dom.importJsonInput.click();
+};
+
+const handleImportFileChange = async (event) => {
+  const file = event.target.files[0];
+
+  if(!file){
+    return;
+  }
+
+  try {
+    const importedTasks = await readTasksFromJsonFile(file);
+
+    const shouldImport = confirm("Importing this file will replace your exisitng tasks. Continue?");
+
+    if(!shouldImport)
+      return;
+
+    replaceTasks(importedTasks);
+    exitEditMode();
+    renderApp();
+
+    event.target.value = "";
+  } catch (error){
+    alert(error);
+    event.target.value = "";
+  }
+};
 
 const initializeApp = () => {
     initilizeState();
@@ -169,6 +201,8 @@ const initializeApp = () => {
     dom.clearFiltersButton.addEventListener("click", clearFilters);
     dom.clearCompletedButton.addEventListener("click", handleClearCompletedTasks);
     dom.exportJsonButton.addEventListener("click", handleExportAsJson);
+    dom.importJsonButton.addEventListener("click", handleImportButtonClick);
+    dom.importJsonInput.addEventListener("change", handleImportFileChange);
 
     dom.dueDateInput.min = getTodayDateString();
     renderApp();

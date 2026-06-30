@@ -31,5 +31,9 @@ export const dom = {
   clearCompletedButton: document.querySelector("#clear-completed-button"),
   exportJsonButton: document.querySelector("#export-json-button"),
   importJsonButton: document.querySelector("#import-json-button"),
-  importJsonInput: document.querySelector("#import-json-input")
+  importJsonInput: document.querySelector("#import-json-input"),
+
+  prevPageButton: document.querySelector("#prev-page-button"),
+  nextPageButton: document.querySelector("#next-page-button"),
+  pageInfo: document.querySelector("#page-info"),
 };

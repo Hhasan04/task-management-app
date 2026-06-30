@@ -23,12 +23,24 @@ import { renderStatistics } from "./statistics.js";
 import { renderTasks } from "./render.js";
 import { exportAsJson } from "./jsonExport.js";
 import { readTasksFromJsonFile } from "./jsonImport.js";
+import { getPaginatedItems, getTotalPages } from "./pagination.js";
+
+const TASKS_PER_PAGE = 10;
+let currentPage = 1;
 
 const renderApp = () => {
   const visibleTasks = getVisibleTasks(getTasks(), getCurrentFilters());
+  const totalPages = getTotalPages(visibleTasks, TASKS_PER_PAGE);
 
-  renderTasks(visibleTasks);
+  if(currentPage > totalPages){
+    currentPage = totalPages
+  }
+
+  const paginatedTasks = getPaginatedItems(visibleTasks, currentPage, TASKS_PER_PAGE);
+
+  renderTasks(paginatedTasks);
   renderStatistics();
+  updatePaginationControls(totalPages);
 };
 
 const getCurrentFilters = () => {
@@ -38,6 +50,27 @@ const getCurrentFilters = () => {
     priority: dom.priorityFilter.value,
     sortBy: dom.sortBy.value
   };
+};
+
+const updatePaginationControls = (totalPages) => {
+  dom.pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+
+  dom.prevPageButton.disabled = currentPage === 1;
+  dom.nextPageButton.disabled = currentPage === totalPages;
+};
+
+const goToPreviousPage = () => {
+  if (currentPage === 1) {
+    return;
+  }
+
+  currentPage--;
+  renderApp();
+};
+
+const goToNextPage = () => {
+  currentPage++;
+  renderApp();
 };
 
 const handleFormSubmit = (event) => {
@@ -114,6 +147,7 @@ const handleStatusChange = (event) => {
 };
 
 const handleFiltersChange = () => {
+  currentPage = 1;
   renderApp();
 };
 
@@ -142,7 +176,8 @@ const clearFilters = () => {
   dom.statusFilter.value = "all";
   dom.priorityFilter.value = "all";
   dom.sortBy.value = "createdAt";
-
+  
+  currentPage = 1;
   renderApp();
 };
 
@@ -171,7 +206,9 @@ const handleImportFileChange = async (event) => {
   try {
     const importedTasks = await readTasksFromJsonFile(file);
 
-    const shouldImport = confirm("Importing this file will replace your exisitng tasks. Continue?");
+    const shouldImport = confirm(
+      "Importing this file will replace your exisitng tasks. Continue?"
+    );
 
     if(!shouldImport)
       return;
@@ -203,6 +240,8 @@ const initializeApp = () => {
     dom.exportJsonButton.addEventListener("click", handleExportAsJson);
     dom.importJsonButton.addEventListener("click", handleImportButtonClick);
     dom.importJsonInput.addEventListener("change", handleImportFileChange);
+    dom.prevPageButton.addEventListener("click", goToPreviousPage);
+    dom.nextPageButton.addEventListener("click", goToNextPage);
 
     dom.dueDateInput.min = getTodayDateString();
     renderApp();

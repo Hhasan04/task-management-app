@@ -1,0 +1,452 @@
+[
+  {
+    "id": "task-8",
+    "title": "Fix login page authentication bypass",
+    "description": "Resolve the vulnerability reported in the security audit where malformed OAuth tokens bypass the login screen.",
+    "priority": "high",
+    "status": "in-progress",
+    "dueDate": "2026-07-02",
+    "createdAt": "2026-06-30T09:00:00.000Z"
+  },
+  {
+    "id": "task-9",
+    "title": "Update landing page hero text",
+    "description": "Change the main value proposition headline based on marketing's new Q3 copy guidelines.",
+    "priority": "low",
+    "status": "pending",
+    "dueDate": "2026-07-15",
+    "createdAt": "2026-06-30T09:15:22.000Z"
+  },
+  {
+    "id": "task-10",
+    "title": "Database index optimization",
+    "description": "Add indexes to the 'orders' table on user_id and created_at to speed up dashboard loading times.",
+    "priority": "medium",
+    "status": "pending",
+    "dueDate": "2026-07-05",
+    "createdAt": "2026-06-30T09:30:11.000Z"
+  },
+  {
+    "id": "task-11",
+    "title": "Draft Q3 engineering roadmap",
+    "description": "Outline high-level epics and resource allocations for the upcoming quarter.",
+    "priority": "high",
+    "status": "in-progress",
+    "dueDate": "2026-07-03",
+    "createdAt": "2026-06-30T10:02:45.000Z"
+  },
+  {
+    "id": "task-12",
+    "title": "Fix profile picture upload bug",
+    "description": "Users are getting a 500 error when uploading PNG files larger than 2MB.",
+    "priority": "medium",
+    "status": "completed",
+    "dueDate": "2026-06-30",
+    "createdAt": "2026-06-29T14:22:18.000Z"
+  },
+  {
+    "id": "task-13",
+    "title": "Review team code coverage",
+    "description": "Check why unit test coverage dropped below 80% after the last merge.",
+    "priority": "low",
+    "status": "pending",
+    "dueDate": "2026-07-10",
+    "createdAt": "2026-06-30T11:11:00.000Z"
+  },
+  {
+    "id": "task-14",
+    "title": "Renew AWS SSL certificates",
+    "description": "Production domain certificate expires in 10 days. Ensure auto-renewal is active or manually rotate.",
+    "priority": "high",
+    "status": "pending",
+    "dueDate": "2026-07-04",
+    "createdAt": "2026-06-30T11:45:55.000Z"
+  },
+  {
+    "id": "task-15",
+    "title": "Create Figma wireframes for checkout",
+    "description": "Design the new 3-step streamlined checkout process for mobile views.",
+    "priority": "high",
+    "status": "in-progress",
+    "dueDate": "2026-07-07",
+    "createdAt": "2026-06-30T12:00:00.000Z"
+  },
+  {
+    "id": "task-16",
+    "title": "Refactor billing controller",
+    "description": "Clean up legacy nested callbacks in the Stripe integration webhook handler.",
+    "priority": "medium",
+    "status": "pending",
+    "dueDate": "2026-07-12",
+    "createdAt": "2026-06-30T13:14:02.000Z"
+  },
+  {
+    "id": "task-17",
+    "title": "Set up Google Analytics 4 tracking",
+    "description": "Embed the new tracking pixels on all conversion-heavy landing pages.",
+    "priority": "low",
+    "status": "pending",
+    "dueDate": "2026-07-20",
+    "createdAt": "2026-06-30T14:05:00.000Z"
+  },
+  {
+    "id": "task-18",
+    "title": "Fix dark mode contrast issues",
+    "description": "Text in the sidebar is unreadable when dark mode is toggled on OLED screens.",
+    "priority": "medium",
+    "status": "in-progress",
+    "dueDate": "2026-07-03",
+    "createdAt": "2026-06-30T14:30:12.000Z"
+  },
+  {
+    "id": "task-19",
+    "title": "Prepare bi-weekly sprint demo slides",
+    "description": "",
+    "priority": "low",
+    "status": "pending",
+    "dueDate": "2026-07-02",
+    "createdAt": "2026-06-30T15:00:00.000Z"
+  },
+  {
+    "id": "task-20",
+    "title": "Migrate database to PostgreSQL 16",
+    "description": "Perform a dry-run migration in the staging environment to check for breaking syntax changes.",
+    "priority": "high",
+    "status": "pending",
+    "dueDate": "2026-07-09",
+    "createdAt": "2026-06-30T15:45:10.000Z"
+  },
+  {
+    "id": "task-21",
+    "title": "Implement multi-factor auth (MFA)",
+    "description": "Add support for authenticator apps (TOTP) during user onboarding.",
+    "priority": "high",
+    "status": "in-progress",
+    "dueDate": "2026-07-14",
+    "createdAt": "2026-06-30T16:10:00.000Z"
+  },
+  {
+    "id": "task-22",
+    "title": "Write API documentation for `/users` endpoint",
+    "description": "Document request payloads, query parameters, and error responses using Swagger/OpenAPI.",
+    "priority": "medium",
+    "status": "completed",
+    "dueDate": "2026-06-29",
+    "createdAt": "2026-06-28T09:00:00.000Z"
+  },
+  {
+    "id": "task-23",
+    "title": "Optimize images in assets folder",
+    "description": "Run WebP compression script on all static homepage images to improve PageSpeed score.",
+    "priority": "low",
+    "status": "pending",
+    "dueDate": "2026-07-18",
+    "createdAt": "2026-06-30T16:40:22.000Z"
+  },
+  {
+    "id": "task-24",
+    "title": "Conduct user interview #1",
+    "description": "Talk with beta tester regarding the new navigation drawer layout.",
+    "priority": "medium",
+    "status": "pending",
+    "dueDate": "2026-07-01",
+    "createdAt": "2026-06-30T17:00:00.000Z"
+  },
+  {
+    "id": "task-25",
+    "title": "Fix notification microservice memory leak",
+    "description": "Investigate why memory usage climbs monotonically in the Redis pub/sub wrapper.",
+    "priority": "high",
+    "status": "in-progress",
+    "dueDate": "2026-07-02",
+    "createdAt": "2026-06-30T17:15:45.000Z"
+  },
+  {
+    "id": "task-26",
+    "title": "Patch system dependencies",
+    "description": "Run npm audit fix to resolve vulnerabilities in the UI ecosystem.",
+    "priority": "medium",
+    "status": "pending",
+    "dueDate": "2026-07-06",
+    "createdAt": "2026-06-30T17:30:00.000Z"
+  },
+  {
+    "id": "task-27",
+    "title": "Draft legal privacy policy updates",
+    "description": "Incorporate compliance requirements for new data collection structures.",
+    "priority": "low",
+    "status": "pending",
+    "dueDate": "2026-07-25",
+    "createdAt": "2026-06-30T17:55:00.000Z"
+  },
+  {
+    "id": "task-28",
+    "title": "Set up localized error messages",
+    "description": "Add Spanish and French translation bundles for standard form errors.",
+    "priority": "medium",
+    "status": "pending",
+    "dueDate": "2026-07-11",
+    "createdAt": "2026-06-30T18:10:14.000Z"
+  },
+  {
+    "id": "task-29",
+    "title": "Add End-to-End Cypress tests",
+    "description": "Build test coverage for critical user journeys: sign up, add to cart, and checkout.",
+    "priority": "high",
+    "status": "pending",
+    "dueDate": "2026-07-08",
+    "createdAt": "2026-06-30T18:30:00.000Z"
+  },
+  {
+    "id": "task-30",
+    "title": "Clean up stale git branches",
+    "description": "Delete merged and abandoned branches older than 3 months on GitHub.",
+    "priority": "low",
+    "status": "completed",
+    "dueDate": "2026-06-30",
+    "createdAt": "2026-06-30T06:00:00.000Z"
+  },
+  {
+    "id": "task-31",
+    "title": "Configure Sentry alerts",
+    "description": "Set up Slack webhooks for immediate notification on production 5xx errors.",
+    "priority": "medium",
+    "status": "in-progress",
+    "dueDate": "2026-07-03",
+    "createdAt": "2026-06-30T19:00:00.000Z"
+  },
+  {
+    "id": "task-32",
+    "title": "Improve component accessibility (a11y)",
+    "description": "Add missing aria-labels and keyboard navigation traps inside the modal dialog components.",
+    "priority": "medium",
+    "status": "pending",
+    "dueDate": "2026-07-13",
+    "createdAt": "2026-06-30T19:22:11.000Z"
+  },
+  {
+    "id": "task-33",
+    "title": "Design application app icon",
+    "description": "Export variants of the updated logo for iOS, Android, and web favicons.",
+    "priority": "low",
+    "status": "pending",
+    "dueDate": "2026-07-22",
+    "createdAt": "2026-06-30T19:45:00.000Z"
+  },
+  {
+    "id": "task-34",
+    "title": "Investigate invoice calculation error",
+    "description": "Some users are charged a cent extra due to floating point rounding errors during tax calculations.",
+    "priority": "high",
+    "status": "in-progress",
+    "dueDate": "2026-07-01",
+    "createdAt": "2026-06-30T20:00:00.000Z"
+  },
+  {
+    "id": "task-35",
+    "title": "Organize virtual team building",
+    "description": "Schedule a date and pick an online game/activity for the mid-year event.",
+    "priority": "low",
+    "status": "pending",
+    "dueDate": "2026-07-16",
+    "createdAt": "2026-06-30T20:15:33.000Z"
+  },
+  {
+    "id": "task-36",
+    "title": "Set up CI/CD pipeline cache",
+    "description": "Configure GitHub Actions caching for node_modules to drop build run times under 3 minutes.",
+    "priority": "medium",
+    "status": "pending",
+    "dueDate": "2026-07-06",
+    "createdAt": "2026-06-30T20:45:12.000Z"
+  },
+  {
+    "id": "task-37",
+    "title": "Research WebSockets vs Server-Sent Events",
+    "description": "Evaluate the best realtime message delivery protocol for our live-feed features.",
+    "priority": "medium",
+    "status": "completed",
+    "dueDate": "2026-06-28",
+    "createdAt": "2026-06-25T10:00:00.000Z"
+  },
+  {
+    "id": "task-38",
+    "title": "Fix overlapping text in safari",
+    "description": "CSS Grid alignment issues causing headings to mash together specifically on iOS Safari.",
+    "priority": "high",
+    "status": "pending",
+    "dueDate": "2026-07-02",
+    "createdAt": "2026-06-30T21:10:00.000Z"
+  },
+  {
+    "id": "task-39",
+    "title": "Export user data for analytics",
+    "description": "Generate a CSV dump of anonymized activity logs for the data science team.",
+    "priority": "low",
+    "status": "pending",
+    "dueDate": "2026-07-04",
+    "createdAt": "2026-06-30T21:30:19.000Z"
+  },
+  {
+    "id": "task-40",
+    "title": "Write post-mortem for server outage",
+    "description": "Detail the root cause analysis and action items from the June 28th API degradation incident.",
+    "priority": "high",
+    "status": "in-progress",
+    "dueDate": "2026-07-01",
+    "createdAt": "2026-06-30T22:00:00.000Z"
+  },
+  {
+    "id": "task-41",
+    "title": "Implement search bar auto-complete",
+    "description": "Add basic debounce functionality and fetch suggestions directly from the search index API.",
+    "priority": "medium",
+    "status": "pending",
+    "dueDate": "2026-07-10",
+    "createdAt": "2026-06-30T22:15:00.000Z"
+  },
+  {
+    "id": "task-42",
+    "title": "Update README installation steps",
+    "description": "Include Docker Compose instructions which were left out in the recent backend upgrade.",
+    "priority": "low",
+    "status": "pending",
+    "dueDate": "2026-07-14",
+    "createdAt": "2026-06-30T22:45:51.000Z"
+  },
+  {
+    "id": "task-43",
+    "title": "Audit AWS IAM roles",
+    "description": "Enforce the principle of least privilege by revoking unused broad administrator permissions.",
+    "priority": "high",
+    "status": "pending",
+    "dueDate": "2026-07-05",
+    "createdAt": "2026-06-30T23:00:00.000Z"
+  },
+  {
+    "id": "task-44",
+    "title": "Create email transactional templates",
+    "description": "Build responsive HTML templates for welcome emails, password resets, and order confirmations.",
+    "priority": "medium",
+    "status": "in-progress",
+    "dueDate": "2026-07-09",
+    "createdAt": "2026-06-30T23:22:10.000Z"
+  },
+  {
+    "id": "task-45",
+    "title": "Fix cookie security flags",
+    "description": "Ensure the session cookie is configured with Secure, HttpOnly, and SameSite=Strict flags.",
+    "priority": "high",
+    "status": "pending",
+    "dueDate": "2026-07-02",
+    "createdAt": "2026-06-30T23:45:00.000Z"
+  },
+  {
+    "id": "task-46",
+    "title": "Upgrade Node.js version to v20",
+    "description": "Transition deployment environments and local setups to the active LTS build.",
+    "priority": "medium",
+    "status": "pending",
+    "dueDate": "2026-07-11",
+    "createdAt": "2026-06-30T23:59:00.000Z"
+  },
+  {
+    "id": "task-47",
+    "title": "Add load skeleton loaders",
+    "description": "Replace generic spinning icons with elegant skeleton cards on list loading screens.",
+    "priority": "low",
+    "status": "pending",
+    "dueDate": "2026-07-17",
+    "createdAt": "2026-06-30T23:59:59.000Z"
+  },
+  {
+    "id": "task-48",
+    "title": "Fix memory leak on chart component",
+    "description": "Unsubscribe from ResizeObserver triggers when Dashboard views are unmounted.",
+    "priority": "high",
+    "status": "in-progress",
+    "dueDate": "2026-07-03",
+    "createdAt": "2026-06-30T10:30:00.000Z"
+  },
+  {
+    "id": "task-49",
+    "title": "Configure automated database snapshots",
+    "description": "Set up AWS RDS lifecycle rules to hold daily snapshots for up to 30 days.",
+    "priority": "high",
+    "status": "completed",
+    "dueDate": "2026-06-29",
+    "createdAt": "2026-06-28T11:20:00.000Z"
+  },
+  {
+    "id": "task-50",
+    "title": "Test app on Android 14 API 34",
+    "description": "Validate push notification behavior against newer background execution limits.",
+    "priority": "medium",
+    "status": "pending",
+    "dueDate": "2026-07-08",
+    "createdAt": "2026-06-30T11:40:00.000Z"
+  },
+  {
+    "id": "task-51",
+    "title": "Build dark/light mode toggle component",
+    "description": "Create a reusable context provider and switch button in the navbar.",
+    "priority": "low",
+    "status": "completed",
+    "dueDate": "2026-06-30",
+    "createdAt": "2026-06-29T16:00:00.000Z"
+  },
+  {
+    "id": "task-52",
+    "title": "Handle token expiration graceful logout",
+    "description": "Prompt users with a clean modal alerting them that their session has expired before throwing them back to login.",
+    "priority": "medium",
+    "status": "in-progress",
+    "dueDate": "2026-07-04",
+    "createdAt": "2026-06-30T12:12:00.000Z"
+  },
+  {
+    "id": "task-53",
+    "title": "Review marketing copy additions",
+    "description": "",
+    "priority": "low",
+    "status": "pending",
+    "dueDate": "2026-07-19",
+    "createdAt": "2026-06-30T13:40:00.000Z"
+  },
+  {
+    "id": "task-54",
+    "title": "Implement custom validation for password strength",
+    "description": "Enforce minimum 10 characters, symbols, mixed case on the frontend and api layers.",
+    "priority": "medium",
+    "status": "pending",
+    "dueDate": "2026-07-07",
+    "createdAt": "2026-06-30T14:15:00.000Z"
+  },
+  {
+    "id": "task-55",
+    "title": "Optimize bundle size split chunking",
+    "description": "Configure Webpack/Vite to slice heavy third-party plotting libraries into lazy loaded chunks.",
+    "priority": "high",
+    "status": "pending",
+    "dueDate": "2026-07-06",
+    "createdAt": "2026-06-30T15:10:00.000Z"
+  },
+  {
+    "id": "task-56",
+    "title": "Set up staging seed script",
+    "description": "Create automated script injecting realistic fake user data into fresh preview environments.",
+    "priority": "medium",
+    "status": "in-progress",
+    "dueDate": "2026-07-05",
+    "createdAt": "2026-06-30T15:50:00.000Z"
+  },
+  {
+    "id": "task-57",
+    "title": "Verify backup recovery restore procedures",
+    "description": "Run an operational recovery simulation using a snapshot from last week to ensure 0% data corruption.",
+    "priority": "high",
+    "status": "pending",
+    "dueDate": "2026-07-01",
+    "createdAt": "2026-06-30T16:22:00.000Z"
+  }
+]

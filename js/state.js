@@ -89,6 +89,7 @@ export const clearCompletedTasks = () => {
 
     tasks = remainingTasks;
 
+    currentPage = 1;
     saveTasksToStorage(tasks, nextTaskId);
 };
 

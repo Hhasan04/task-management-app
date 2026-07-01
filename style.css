@@ -19,6 +19,64 @@
   --shadow: 0 10px 30px rgba(31, 41, 55, 0.07);
 }
 
+body.dark-mode {
+  --bg: #0f172a;
+  --panel: #111827;
+  --panel-soft: #1f2937;
+  --text: #f9fafb;
+  --muted: #9ca3af;
+  --line: #334155;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+  background: #0b1220;
+  color: var(--text);
+  border-color: var(--line);
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+  color: #64748b;
+}
+
+body.dark-mode .secondary-button,
+body.dark-mode .page-button,
+body.dark-mode .action-button,
+body.dark-mode .icon-button {
+  background: #0b1220;
+  color: var(--text);
+  border-color: var(--line);
+}
+
+body.dark-mode .table-wrapper,
+body.dark-mode tbody tr {
+  background: var(--panel);
+}
+
+body.dark-mode tbody tr:hover {
+  background: #182234;
+}
+
+body.dark-mode th {
+  background: var(--panel-soft);
+  color: var(--text);
+}
+
+body.dark-mode .stat-card span,
+body.dark-mode label,
+body.dark-mode .task-title {
+  color: var(--text);
+}
+
+body.dark-mode .task-description,
+body.dark-mode .drag-panel p,
+body.dark-mode .page-info {
+  color: var(--muted);
+}
+
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;

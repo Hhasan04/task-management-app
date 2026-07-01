@@ -36,4 +36,6 @@ export const dom = {
   prevPageButton: document.querySelector("#prev-page-button"),
   nextPageButton: document.querySelector("#next-page-button"),
   pageInfo: document.querySelector("#page-info"),
+
+  themeToggleButton: document.querySelector("#theme-toggle-button"),
 };

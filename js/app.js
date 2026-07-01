@@ -24,6 +24,7 @@ import { renderTasks } from "./render.js";
 import { exportAsJson } from "./jsonExport.js";
 import { readTasksFromJsonFile } from "./jsonImport.js";
 import { getPaginatedItems, getTotalPages } from "./pagination.js";
+import { initializeTheme, toggleTheme } from "./theme.js";
 
 const TASKS_PER_PAGE = 10;
 let currentPage = 1;
@@ -226,6 +227,7 @@ const handleImportFileChange = async (event) => {
 
 const initializeApp = () => {
     initilizeState();
+    initializeTheme(dom.themeToggleButton);
     
     dom.taskForm.addEventListener("submit", handleFormSubmit);
     dom.taskList.addEventListener("click", handleTaskListClick);
@@ -242,6 +244,7 @@ const initializeApp = () => {
     dom.importJsonInput.addEventListener("change", handleImportFileChange);
     dom.prevPageButton.addEventListener("click", goToPreviousPage);
     dom.nextPageButton.addEventListener("click", goToNextPage);
+    dom.themeToggleButton.addEventListener("click", () => {toggleTheme(dom.themeToggleButton);});
 
     dom.dueDateInput.min = getTodayDateString();
     renderApp();

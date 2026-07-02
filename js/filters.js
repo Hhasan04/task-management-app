@@ -1,7 +1,7 @@
 const priorityOrder = {
-    "High": 3,
-    "Medium": 2,
-    "Low": 1
+    "high": 3,
+    "medium": 2,
+    "low": 1
 };
 
 export const getVisibleTasks = (tasks, filters) => {
@@ -39,7 +39,8 @@ export const getVisibleTasks = (tasks, filters) => {
         }
 
         if(filters.sortBy === "priority") {
-            return priorityOrder[taskB.priority] - priorityOrder[taskA.priority];
+            console.log(taskA.priority);
+            return  priorityOrder[taskB.priority] - priorityOrder[taskA.priority];
         }
 
         return 0;
